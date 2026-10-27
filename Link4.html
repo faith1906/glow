@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Link 4</title>
+  <style>
+    /* Reset and Base Styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Playfair Display', Georgia, serif, sans-serif;
+    }
+
+    body {
+      background-color: #faf6f0; /* Soft blush nude background */
+      color: #333;
+      padding: 40px 20px;
+    }
+
+    .cart-container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    }
+
+    .cart-header {
+      border-bottom: 2px solid #f3e5df;
+      padding-bottom: 15px;
+      margin-bottom: 25px;
+      text-align: center;
+    }
+
+    .cart-header h1 {
+      font-size: 28px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #4a3b32;
+    }
+
+    /* Cart Table Layout */
+    .cart-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 25px;
+    }
+
+    .cart-table th {
+      text-align: left;
+      padding-bottom: 15px;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #a38f85;
+      border-bottom: 1px solid #f3e5df;
+    }
+
+    .cart-item {
+      border-bottom: 1px solid #f9f1ed;
+    }
+
+    .cart-item td {
+      padding: 20px 0;
+      vertical-align: middle;
+    }
+
+    .product-info {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .product-img {
+      width: 70px;
+      height: 70px;
+      border-radius: 8px;
+      object-fit: cover;
+      background-color: #fceee9;
+    }
+
+    .product-details h3 {
+      font-size: 16px;
+      color: #333;
+      margin-bottom: 4px;
+    }
+
+    .product-details span {
+      font-size: 13px;
+      color: #888;
+    }
+
+    /* Quantity Controls */
+    .quantity-control {
+      display: flex;
+      align-items: center;
+      border: 1px solid #e0d0c8;
+      border-radius: 20px;
+      width: max-content;
+      overflow: hidden;
+    }
+
+    .quantity-btn {
+      background: none;
+      border: none;
+      padding: 5px 12px;
+      cursor: pointer;
+      font-size: 16px;
+      color: #555;
+    }
+
+    .quantity-btn:hover {
+      background-color: #fcedea;
+    }
+
+    .quantity-input {
+      width: 30px;
+      text-align: center;
+      border: none;
+      outline: none;
+      font-size: 14px;
+    }
+
+    .remove-btn {
+      background: none;
+      border: none;
+      color: #c88a8a;
+      cursor: pointer;
+      font-size: 13px;
+      text-decoration: underline;
+    }
+
+    .remove-btn:hover {
+      color: #a34848;
+    }
+
+    /* Cart Summary Section */
+    .cart-summary {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 12px;
+      border-top: 2px solid #f3e5df;
+      padding-top: 20px;
+    }
+
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      width: 250px;
+      font-size: 14px;
+      color: #666;
+    }
+
+    .summary-row.total {
+      font-size: 18px;
+      font-weight: bold;
+      color: #4a3b32;
+      border-top: 1px solid #f3e5df;
+      padding-top: 10px;
+    }
+
+    .checkout-btn {
+      margin-top: 15px;
+      width: 250px;
+      padding: 14px;
+      background-color: #d49a89; /* Elegant rose gold/terracotta button */
+      color: #ffffff;
+      border: none;
+      border-radius: 25px;
+      font-size: 14px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .checkout-btn:hover {
+      background-color: #be8373;
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+<center>
+<h1><font color="Purple">Beauty Glow</font></h1>
+<br>
+<hr>
+<br>
+</center>
+</header>
+
+<!-- Menu -->
+<nav>
+<center>
+<a href="index.html">HOME</a>
+<a href="file:///D:/IS%20107%20MENDOZA%20BSIS%203A/Link%202.html">PRODUCTS</a>
+<a href="file:///D:/IS%20107%20MENDOZA%20BSIS%203A/Link4.html">CART</a>
+<a href="file:///D:/IS%20107%20MENDOZA%20BSIS%203A/Link%203.html">ABOUT US</a>
+<a href="file:///D:/IS%20107%20MENDOZA%20BSIS%203A/Link5.html">CONTACT US</a>
+</center>
+<br>
+<hr>
+</nav>
+
+<br>
+
+  <div class="cart-container">
+    <div class="cart-header">
+      <h1>Your Shopping Bag</h1>
+    </div>
+
+    <table class="cart-table">
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Quantity</th>
+          <th>Price</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="cart-items">
+        <!-- Cart Item 1 -->
+        <tr class="cart-item" data-price="34.00">
+          <td>
+            <div class="product-info">
+              <img src="https://www.oulaccosmetics.com/cdn/shop/files/Y14OnceBitten-1200x1200_bb6f5b0a-9fc0-456d-84f1-fd5a8bb698a8.jpg?v=1702620641&width=1800" alt="Velvet Matte Lipstick" class="product-img">
+              <div class="product-details">
+                <h3>Velvet Matte Lipstick</h3>
+                <span>Shade: Rose Nude</span>
+              </div>
+            </div>
+          </td>
+          <td>
+            <div class="quantity-control">
+              <button class="quantity-btn decrease">-</button>
+              <input type="text" class="quantity-input" value="1" readonly>
+              <button class="quantity-btn increase">+</button>
+            </div>
+          </td>
+          <td class="item-price">$34.00</td>
+          <td><button class="remove-btn">Remove</button></td>
+        </tr>
+
+        <!-- Cart Item 2 -->
+        <tr class="cart-item" data-price="48.00">
+          <td>
+            <div class="product-info">
+              <img src="https://media.allure.com/photos/5771addb3b5256713da4c394/master/pass/beauty-trends-blogs-daily-beauty-reporter-2016-04-25-liquid-foundations.jpg" alt="Liquid Foundation" class="product-img">
+              <div class="product-details">
+                <h3>Liquid Foundation</h3>
+                <span>Size: 30ml</span>
+              </div>
+            </div>
+          </td>
+          <td>
+            <div class="quantity-control">
+              <button class="quantity-btn decrease">-</button>
+              <input type="text" class="quantity-input" value="1" readonly>
+              <button class="quantity-btn increase">+</button>
+            </div>
+          </td>
+          <td class="item-price">$48.00</td>
+          <td><button class="remove-btn">Remove</button></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Order Summary -->
+    <div class="cart-summary">
+      <div class="summary-row">
+        <span>Subtotal</span>
+        <span id="subtotal">$82.00</span>
+      </div>
+      <div class="summary-row">
+        <span>Estimated Shipping</span>
+        <span>$5.00</span>
+      </div>
+      <div class="summary-row total">
+        <span>Total</span>
+        <span id="total">$87.00</span>
+      </div>
+      <button class="checkout-btn">Proceed to Checkout</button>
+    </div>
+  </div>
+
+  <script>
+    // JavaScript to handle quantity updates and pricing calculations dynamically
+    document.addEventListener("DOMContentLoaded", () => {
+      const cartTable = document.getElementById("cart-items");
+
+      cartTable.addEventListener("click", (e) => {
+        const row = e.target.closest(".cart-item");
+        if (!row) return;
+
+        const quantityInput = row.querySelector(".quantity-input");
+        let quantity = parseInt(quantityInput.value);
+
+        if (e.target.classList.contains("increase")) {
+          quantity++;
+          quantityInput.value = quantity;
+          updateTotals();
+        } else if (e.target.classList.contains("decrease")) {
+          if (quantity > 1) {
+            quantity--;
+            quantityInput.value = quantity;
+            updateTotals();
+          }
+        } else if (e.target.classList.contains("remove-btn")) {
+          row.remove();
+          updateTotals();
+        }
+      });
+
+      function updateTotals() {
+        let subtotal = 0;
+        const items = document.querySelectorAll(".cart-item");
+
+        items.forEach((item) => {
+          const price = parseFloat(item.getAttribute("data-price"));
+          const quantity = parseInt(item.querySelector(".quantity-input").value);
+          subtotal += price * quantity;
+        });
+
+        const shipping = items.length > 0 ? 5.00 : 0.00;
+        const total = subtotal + shipping;
+
+        document.getElementById("subtotal").innerText = `$${subtotal.toFixed(2)}`;
+        document.getElementById("total").innerText = `$${total.toFixed(2)}`;
+      }
+    });
+  </script>
+  
+  <br>
+  <br>
+  <hr>
+  <br>
+  
+  <!-- FOOTER -->
+<footer>
+<center>
+<p>
+Author: Faith Andrea Mendoza <br>
+Year: 2026 <br>
+Email: <a href="faithandreamendoza33@gmail.com"> send email here</a><br>
+Place: Miagao, Iloilo, Philippines
+<br>
+
+<p>
+&copy; 2026 Beauty Glow. All Rights Reserved.
+<p>
+
+</center>
+</footer>
+
+</body>
+</html>
